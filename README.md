@@ -9,12 +9,15 @@ The project is deployed locally with **Streamlit** for an interactive web interf
 
 1. Clone this repository:
    git clone https://github.com/mtaimoor1407/Email-Spam-Classifier.git
+
    cd Email-Spam-Classifier
    
 2. Install dependencies:
+
    pip install -r requirements.txt
    
 3. Run the Streamlit app:
+
    streamlit run app.py
 
 # Features:
