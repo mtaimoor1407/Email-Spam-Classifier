@@ -7,6 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.svm import SVC
 from imblearn.under_sampling import RandomUnderSampler 
+from sklearn.metrics import classification_report, accuracy_score
 
 from src.preprocess import clean_text
 
@@ -43,6 +44,16 @@ nb_model.fit(X_resampled, y_resampled)
 
 svm_model = SVC(kernel='linear')
 svm_model.fit(X_resampled, y_resampled)
+
+# Models Evaluation
+y_pred_nb = nb_model.predict(X_test_vec)
+y_pred_svc = svm_model.predict(X_test_vec)
+
+print("Accuracy for Naive Bayes: ", accuracy_score(y_test, y_pred_nb))
+print("Accuracy for SVC: ", accuracy_score(y_test, y_pred_svc))
+
+print("Report for Naive Bayes: \n", classification_report(y_test, y_pred_nb))
+print("Report for SVC: \n", classification_report(y_test, y_pred_svc))
 
 # Save models and vectorizer
 os.makedirs('models', exist_ok=True)
